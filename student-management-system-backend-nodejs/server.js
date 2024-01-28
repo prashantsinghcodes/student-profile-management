@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json());
 
-app.get('/api/users', (req, res) => {
-    const user = {
-        studentName : "Prashant Singh",
-        phone : "08376818782"
-    };
-    res.json(user);
-  });
+
+  app.post('/student/save', (req, res) => {
+    const newUser = req.body;
+    console.log(newUser);
+    res.json({ message: 'User created successfully' });
+  });  
 
 const port = 3001;
 app.listen(port, () => {
